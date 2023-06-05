@@ -3,24 +3,27 @@
   <head>
     <title>Todo-App|Max Ryan</title>
     <link rel = stylesheet type ="text/css" href="style.css">
-    <link rel = script type ="JavaScript" href="script.js">
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
   </head>
  
 <body>
+  
   <div id = "Header" class = "header">
     <h1>T O D O</h1>
       <input type = "text" id ="newInput" placeholder ="Add a new task...">
       <span onclick ="newElement()" class ="addBtn">Add</span>
   </div>
 
-  <ul id = "myUL">
-    <li>Complete online JavaScript course</li>
-    <li>Jog around the park 3x</li>
-    <li>10 minutes meditation</li>
-    <li>Read for 1 hour</li>
-    <li>Pick up groceries</li>
-    <li>Complete Todo App on Frontend Mentor</li>
+  <ul id = "todo">
+    <li class = "checked"><span class = "close">×</span>Complete online JavaScript course</li>
+    <li><span class = "close">×</span>Jog around the park 3x</li>
+    <li><span class = "close">×</span>10 minutes meditation</li>
+    <li><span class = "close">×</span>Read for 1 hour</li>
+    <li><span class = "close">×</span>Pick up groceries</li>
+    <li><span class = "close">×</span>Complete Todo App on Frontend Mentor</li>
   </ul>
+
+  <script type ="text/javascript" src="script.js"></script>
 </body>
 
 </html>
