@@ -27,3 +27,37 @@
 </body>
 
 </html>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Todo-App | Max Ryan</title>
+    <link rel = stylesheet type ="text/css" href="style.css">
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+  </head>
+ 
+<body>
+  
+  <div id = "Header" class = "header">
+    <h1>T O D O</h1>
+      <input type = "text" id ="newInput" placeholder ="Add a new task...">
+      <span onclick ="newElement()" class ="addBtn">Add</span>
+  </div>
+
+  <ul id = "todo">
+    <li class = "checked"><span class = "close">×</span>Complete online JavaScript course</li>
+    <li><span class = "close">×</span>Jog around the park 3x</li>
+    <li><span class = "close">×</span>10 minutes meditation</li>
+    <li><span class = "close">×</span>Read for 1 hour</li>
+    <li><span class = "close">×</span>Pick up groceries</li>
+    <li><span class = "close">×</span>Complete Todo App on Frontend Mentor</li>
+  </ul>
+
+  <script type ="text/javascript" src="script.js"></script>
+
+  <button>Clear</button>
+  <button>All</button>
+  <button>Active</button>
+  <button>Clear Completed</button>
+</body>
+
+</html>
