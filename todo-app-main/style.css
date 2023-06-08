@@ -19,7 +19,7 @@ ul {
 /* Style the list items */
 ul li {
     cursor: pointer;
-    position: relative;
+    position:relative;
     padding: 12px 8px 12px 40px;
     list-style-type: none;
     background: #eee;
@@ -110,4 +110,15 @@ input {
 }
 .addBtn:hover {
     background-color: #4f71da;
+}
+
+/*Styling buttons at the bottom of page*/
+button{
+    padding:3px;
+    width:5%;
+    background: none;
+    position: relative;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.2s;
 }
