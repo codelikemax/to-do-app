@@ -2,6 +2,10 @@ body {
     margin: 0;
     min-width: 250px;
 }
+.dark-mode {
+    background-color: black;
+    color: white;
+}
   
 /* Include the padding and border in an element's total width and height */
 * {
@@ -95,7 +99,7 @@ input {
     font-size: 16px;
 }
   
-/* "Add" button */
+/*Add button */
 .addBtn {
     padding: 10px;
     width: 25%;
@@ -121,4 +125,43 @@ button{
     text-align: center;
     cursor: pointer;
     transition: 0.2s;
+}
+
+/* Light theme styles */
+body {
+    background-color: #f1f1f1;
+    color: #333;
+}
+
+#container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+/* Dark theme styles */
+body.dark {
+    background-color: #333;
+    color: #f1f1f1;
+}
+
+#container.dark {
+    border: 1px solid #f1f1f1;
+}
+
+.dark h1 {
+    color: #f1f1f1;
+}
+
+.dark p {
+    color: #ccc;
+}
+
+/* Theme toggle button styles */
+#theme-toggle {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #333;
+    color: #f1f1f1;
+    border: none;
+    cursor: pointer;
 }
