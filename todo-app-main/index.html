@@ -10,9 +10,11 @@
   
   <div id = "Header" class = "header">
     <h1>T O D O</h1>
+    <button class="toggle-button" onclick="myFunction() ">
+      <img src = "images/moon_icon.png">
+    </button>
     <input type = "text" id ="newInput" placeholder ="Add a new task...">
     <span onclick ="newElement()" class ="addBtn">Add</span>
-    <button onclick="myFunction()">Toggle dark mode</button>
   </div>
 
   <ul id = "todo">
@@ -26,10 +28,7 @@
 
   <script type ="text/javascript" src="script.js"></script>
 
-  <button>Clear</button>
-  <button>All</button>
-  <button>Active</button>
-  <button>Clear Completed</button>
+
 </body>
 
 </html>
