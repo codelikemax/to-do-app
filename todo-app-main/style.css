@@ -101,8 +101,8 @@ input {
   
 /*Add button */
 .addBtn {
-    padding: 10px;
-    width: 25%;
+    padding: 11px;
+    width: 10%;
     background: #242bff;
     color: #ffffff;
     float: left;
@@ -116,23 +116,11 @@ input {
     background-color: #4f71da;
 }
 
-/*Styling buttons at the bottom of page*/
-button{
-    padding:3px;
-    width:5%;
-    background: none;
-    position: relative;
-    text-align: center;
-    cursor: pointer;
-    transition: 0.2s;
-}
-
 /* Light theme styles */
 body {
     background-color: #f1f1f1;
     color: #333;
 }
-
 #container {
     width: 80%;
     margin: 0 auto;
@@ -143,25 +131,28 @@ body.dark {
     background-color: #333;
     color: #f1f1f1;
 }
-
 #container.dark {
     border: 1px solid #f1f1f1;
 }
-
 .dark h1 {
     color: #f1f1f1;
 }
-
 .dark p {
     color: #ccc;
 }
 
-/* Theme toggle button styles */
-#theme-toggle {
-    margin-top: 20px;
-    padding: 10px 20px;
-    background-color: #333;
-    color: #f1f1f1;
+/*Styling toggle-button*/
+.toggle-button
+{
     border: none;
+    background-color:none;
+    background: none;
     cursor: pointer;
+    position: relative;
+}
+
+.toggle-button img
+{
+    width: 50px;
+    height: 50px;
 }
