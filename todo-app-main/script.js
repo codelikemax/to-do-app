@@ -6,6 +6,7 @@ var i;
 for (i = 0; i < closebtns.length; i++) {
   closebtns[i].addEventListener("click", function() {
     this.parentElement.style.display = 'none';
+    updateTaskCount();
   });
 }
 
@@ -14,8 +15,22 @@ var list = document.querySelector('ul');
 list.addEventListener('click', function(ev) {
   if (ev.target.tagName === 'LI') {
     ev.target.classList.toggle('checked');
+    updateTaskCount();
   }
 }, false);
+
+//Using enter to accept input
+var input = document.getElementById('newInput');
+input.addEventListener('keydown', function(event) {
+  if (event.key === 'Enter') {
+    event.preventDefault(); // Prevent form submission
+    var inputValue = input.value.trim();
+    if (inputValue !== '') {
+      newElement(inputValue);
+      input.value = ''; // Clear the input field
+    }
+  }
+});
 
 // Add a new item to the list when "Add" is clicked
 function newElement() {
@@ -27,6 +42,7 @@ function newElement() {
     alert("This field cannot be empty!");
   } else {
     document.getElementById("todo-list").appendChild(li);
+    updateTaskCount(); // Update task count
   }
 
   document.getElementById("newInput").value = "";
@@ -41,9 +57,11 @@ function newElement() {
     closebtns[i].onclick = function() {
       var div = this.parentElement;
       div.style.display = "none";
+      updateTaskCount(); // Update task count
     };
   }
 }
+
 
 // Clear completed items from the list
 function clearCompletedItems() {
@@ -51,6 +69,7 @@ function clearCompletedItems() {
   completedItems.forEach(function(item) {
     item.style.display = 'none';
   });
+  updateTaskCount();
 }
 
 // Get the reference to the "Clear Completed" button
@@ -73,13 +92,15 @@ function showCompletedItems() {
 
 // Get the reference to the "Completed" button
 var completedButton = document.getElementById('completed-button');
+
 // Add an event listener to the button
 completedButton.addEventListener('click', showCompletedItems);
 
 
 // Get the reference to the "Active" button
 var activeButton = document.getElementById('active-button');
-//Adding an event listener to the button
+
+// Adding an event listener to the button
 activeButton.addEventListener('click', showActiveItems);
 
 // Show only active items
@@ -93,3 +114,119 @@ function showActiveItems() {
     }
   });
 }
+
+// All button
+var allButton = document.getElementById('all-button');
+
+allButton.addEventListener('click', showAllItems);
+
+function showAllItems() {
+  var listItems = document.querySelectorAll('#todo-list li');
+  listItems.forEach(function(item) {
+    item.style.display = '';
+  });
+}
+
+// Toggle-button functionalities
+function myFunction() {
+  var element = document.body;
+  element.classList.toggle("dark-mode");
+
+//Changing image on click
+  var toggleButton = document.querySelector('.toggle-button');
+  var currentImage = toggleButton.querySelector('img');
+  var newImageSrc = '';
+
+  if (element.classList.contains('dark-mode')) {
+    newImageSrc = 'images/sun_icon.png'; 
+  } else {
+    newImageSrc = 'images/moon_icon.png'; 
+  }
+
+  currentImage.src = newImageSrc;
+
+//Button container color change
+  var buttons = document.querySelectorAll('.button-container button');
+  buttons.forEach(function(button) {
+    button.classList.toggle('light-mode');
+  });
+
+//Header image change
+  var header = document.getElementById('header');
+
+  if (element.classList.contains('dark-mode')) {
+    header.style.backgroundImage = 'url(images/bg-desktop-dark.jpg)';
+  } else {
+    header.style.backgroundImage = 'url(images/bg-desktop-light.jpg)';
+  }
+
+// Set initial background image size
+var header = document.getElementById('header');
+header.style.backgroundSize = 'auto';
+
+}
+
+// TaskCount functionalities
+function updateTaskCount() {
+  var uncheckedItems = document.querySelectorAll('#todo-list li:not(.checked)');
+  var taskCountElement = document.getElementById('task-count');
+  taskCountElement.textContent = uncheckedItems.length + " items left";
+}
+
+// Call the function initially to display the initial count
+updateTaskCount();
+
+//Drag and drop functionalities
+var dragSrcElement = null;
+
+function handleDragStart(e) {
+  dragSrcElement = this;
+  e.dataTransfer.effectAllowed = 'move';
+  e.dataTransfer.setData('text/html', this.innerHTML);
+  this.classList.add('dragging');
+}
+
+function handleDragOver(e) {
+  if (e.preventDefault) {
+    e.preventDefault();
+  }
+  e.dataTransfer.dropEffect = 'move';
+  return false;
+}
+
+function handleDragEnter(e) {
+  this.classList.add('over');
+}
+
+function handleDragLeave(e) {
+  this.classList.remove('over');
+}
+
+function handleDrop(e) {
+  if (e.stopPropagation) {
+    e.stopPropagation();
+  }
+  if (dragSrcElement !== this) {
+    dragSrcElement.innerHTML = this.innerHTML;
+    this.innerHTML = e.dataTransfer.getData('text/html');
+  }
+  return false;
+}
+
+function handleDragEnd(e) {
+  this.classList.remove('dragging');
+  var listItems = document.querySelectorAll('#todo-list li');
+  listItems.forEach(function(item) {
+    item.classList.remove('over');
+  });
+}
+
+var listItems = document.querySelectorAll('#todo-list li');
+listItems.forEach(function(item) {
+  item.addEventListener('dragstart', handleDragStart, false);
+  item.addEventListener('dragenter', handleDragEnter, false);
+  item.addEventListener('dragover', handleDragOver, false);
+  item.addEventListener('dragleave', handleDragLeave, false);
+  item.addEventListener('drop', handleDrop, false);
+  item.addEventListener('dragend', handleDragEnd, false);
+});
