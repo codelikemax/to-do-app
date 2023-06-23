@@ -7,28 +7,43 @@
   </head>
  
 <body>
-  
-  <div id = "Header" class = "header">
-    <h1>T O D O</h1>
-    <button class="toggle-button" onclick="myFunction() ">
+
+  <div id = "header" class = "header">
+    <h1>T O D O</h1> 
+    <button class="toggle-button" onclick="myFunction()">
       <img src = "images/moon_icon.png">
     </button>
-    <input type = "text" id ="newInput" placeholder ="Add a new task...">
+
+    <div id="input-container">
+      <input type="text" id="newInput" placeholder="Add a new task...">
+    </div>
     <span onclick ="newElement()" class ="addBtn">Add</span>
+ </div> 
+
+  <div id = "todo-list-container">
+    <ul id = "todo-list">
+      <li class = "checked"><span class = "close">×</span>Complete online JavaScript course</li>
+      <li><span class = "close">×</span>Jog around the park 3x</li>
+      <li><span class = "close">×</span>10 minutes meditation</li>
+      <li><span class = "close">×</span>Read for 1 hour</li>
+      <li><span class = "close">×</span>Pick up groceries</li>
+      <li><span class = "close">×</span>Complete Todo App on Frontend Mentor</li>
+    </ul>
+
+    
+    <div id="button-container">
+      <button id="clear-completed-button">Clear Completed</button>
+      <button id="completed-button">Completed</button>
+      <button id="active-button">Active</button>
+    </div>
   </div>
 
-  <ul id = "todo">
-    <li class = "checked"><span class = "close">×</span>Complete online JavaScript course</li>
-    <li><span class = "close">×</span>Jog around the park 3x</li>
-    <li><span class = "close">×</span>10 minutes meditation</li>
-    <li><span class = "close">×</span>Read for 1 hour</li>
-    <li><span class = "close">×</span>Pick up groceries</li>
-    <li><span class = "close">×</span>Complete Todo App on Frontend Mentor</li>
-  </ul>
 
   <script type ="text/javascript" src="script.js"></script>
-
 
 </body>
 
 </html>
+
+
+
