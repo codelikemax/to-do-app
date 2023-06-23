@@ -2,24 +2,33 @@ body {
     margin: 0;
     min-width: 250px;
 }
-.dark-mode {
-    background-color: black;
-    color: white;
+  
+#todo-list-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 50vh;
 }
-  
-/* Include the padding and border in an element's total width and height */
-* {
-    box-sizing:border-box;
-  }
-  
+ #todo-list {
+    margin:20px;
+    padding: 50px;
+    width: 500px;
+    position: relative;
+    list-style: none;
+    text-align: center;
+}
+    
 /*margins and padding for the list */
 ul {
-    margin:10px;
-    padding: 10px;
+    margin:20px;
+    padding: 50px;
     width: 500px;
     position: relative;
 }
-  
+
+
+/*******************************************************************************/
 /* Style the list items */
 ul li {
     cursor: pointer;
@@ -68,7 +77,7 @@ ul li.checked::before {
     background-color: #f44336;
     color: white;
 }
-  
+/***************************************************************************************************/
 /* header style*/
 .header {
     background-image: url(images/bg-desktop-light.jpg);
@@ -79,7 +88,20 @@ ul li.checked::before {
     font-family:Arial, Helvetica, sans-serif;
     height:40%;
     width: 100%;
+    
 }
+
+.header h1 {
+    padding-left: 500px;
+}
+#input-container {
+    display: flex;
+    justify-content: center;
+    width: 1200px;
+}
+  
+  
+
   
 /* Clear floats after the header */
 .header:after {
@@ -115,7 +137,56 @@ input {
 .addBtn:hover {
     background-color: #4f71da;
 }
+#clear-completed-button {
+    background: none;
+    border: none;
+    padding: 0;
+    font-family: inherit;
+    font-size: inherit;
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+    margin-top: 10px; 
+}
+#clear-completed-button:active {
+    color: blue; /* Set color to blue when button is clicked */
+}
+#completed-button {
+    background: none;
+    border: none;
+    padding: 0;
+    font-family: inherit;
+    font-size: inherit;
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+#completed-button:active {
+    color: blue; /*Sets color to blue when button is clicked*/
+}
 
+#active-button {
+    background: none;
+    border: none;
+    padding: 0;
+    font-family: inherit;
+    font-size: inherit;
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+#active-button:active {
+    color: blue; /*Sets color to blue when button is clicked*/
+}
+
+#button-container {
+    display: flex;
+    gap: 10px;
+}
+
+/***************************************************************************************************/
 /* Light theme styles */
 body {
     background-color: #f1f1f1;
@@ -127,12 +198,14 @@ body {
 }
 
 /* Dark theme styles */
-body.dark {
-    background-color: #333;
-    color: #f1f1f1;
+
+.dark-mode {
+    background-color: rgb(41, 50, 62);
+    color: white;
 }
+
 #container.dark {
-    border: 1px solid #f1f1f1;
+    border: 1px solid #282829;
 }
 .dark h1 {
     color: #f1f1f1;
@@ -147,6 +220,7 @@ body.dark {
     border: none;
     background-color:none;
     background: none;
+    src: url(/images/moon_icon.png);
     cursor: pointer;
     position: relative;
 }
@@ -156,3 +230,8 @@ body.dark {
     width: 50px;
     height: 50px;
 }
+/*******************************************************************************************/
+
+
+
+
