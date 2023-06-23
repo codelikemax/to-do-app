@@ -307,3 +307,22 @@ input {
 .over {
   background-color: lightgray;
 }
+/*****************************************************************************************/
+/* Default styles for all devices */
+body {
+  font-size: 16px;
+}
+
+/* Styles for devices with a maximum width of 768px (such as tablets) */
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+}
+
+/* Styles for devices with a maximum width of 480px (such as smartphones) */
+@media (max-width: 480px) {
+  body {
+    font-size: 12px;
+  }
+}
