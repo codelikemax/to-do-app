@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<div class = "container">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo-App | Max Ryan</title>
+    <link rel = stylesheet type ="text/css" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Josefin+Sans">
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+  </head>
+ 
+<body>
+
+  <div id="header" class="header">
+    <div class="header-top">
+      <h1>T O D O</h1>
+      <button class="toggle-button" onclick="myFunction()">
+        <img src="images/moon_icon.png">
+      </button>
+    </div>
+    <div class="header-bottom">
+      <input type="text" id="newInput" placeholder="Add a new task...">
+    </div>
+  </div>
+  
+  
+
+  <div id = "todo-list-container">
+    <ul id = "todo-list">
+      <li class = "checked"><span class = "close">×</span>Complete online JavaScript course</li>
+      <li draggable="true"><span class = "close">×</span>Jog around the park 3x</li>
+      <li draggable="true"><span class = "close">×</span>10 minutes meditation</li>
+      <li draggable="true"><span class = "close">×</span>Read for 1 hour</li>
+      <li draggable="true"><span class = "close">×</span>Pick up groceries</li>
+      <li draggable="true"><span class = "close">×</span>Complete Todo App on Frontend Mentor</li>
+    </ul>
+
+   
+    
+    <div id="button-container">
+      <div id="task-count"></div>
+      <button id="all-button">All</button>
+      <button id="active-button">Active</button>
+      <button id="completed-button">Completed</button>
+      <button id="clear-completed-button">Clear Completed</button>
+    </div>
+  </div>
+
+<p>Drag and drop to reorder the list</p>
+
+  <script type ="text/javascript" src="script.js"></script>
+
+</body>
+</div>
+
+</html>
+
+
+
