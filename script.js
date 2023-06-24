@@ -1,6 +1,7 @@
 // Retrieve elements with the close class
 var closebtns = document.getElementsByClassName("close");
 var i;
+updateTaskCount();
 
 // Loop through the elements, and hide the parent when clicked on
 for (i = 0; i < closebtns.length; i++) {
@@ -117,9 +118,7 @@ function showActiveItems() {
 
 // All button
 var allButton = document.getElementById('all-button');
-
 allButton.addEventListener('click', showAllItems);
-
 function showAllItems() {
   var listItems = document.querySelectorAll('#todo-list li');
   listItems.forEach(function(item) {
@@ -170,11 +169,25 @@ header.style.backgroundSize = 'auto';
 function updateTaskCount() {
   var uncheckedItems = document.querySelectorAll('#todo-list li:not(.checked)');
   var taskCountElement = document.getElementById('task-count');
-  taskCountElement.textContent = uncheckedItems.length + " items left";
+  taskCountElement.textContent = uncheckedItems.length + " item(s) left";
 }
 
 // Call the function initially to display the initial count
 updateTaskCount();
+
+// Add event listener to the list container
+var listContainer = document.getElementById('todo-list');
+listContainer.addEventListener('click', function(event) {
+  if (event.target.classList.contains('close')) {
+    var listItem = event.target.parentElement;
+    listItem.remove();
+    updateTaskCount(); // Call the function to update task count
+  } else if (event.target.tagName === 'SPAN') {
+    var listItem = event.target.parentElement;
+    listItem.classList.toggle('checked');
+    updateTaskCount(); // Call the function to update task count
+  }
+});
 
 //Drag and drop functionalities
 var dragSrcElement = null;
