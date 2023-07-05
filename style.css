@@ -6,7 +6,9 @@ body {
     font-size: 14px;
     text-align: center;
 }
+
   
+
 #todo-list-container {
     display: flex;
     flex-direction: column;
@@ -350,4 +352,55 @@ input {
 .over {
   background-color: lightgray;
 }
+
 /*************************************************************/
+/* Media queries for desktop screens */
+@media screen and (min-width: 992px) {
+    ul {
+      width: 800px;
+    }
+  }
+  
+  /* Media queries for tablet and large phone screens */
+  @media screen and (max-width: 991px) {
+    ul {
+      width: 90%;
+      margin: 10px;
+      padding: 30px;
+    }
+  
+  .title {
+    font-size: 20px;
+  }
+
+  .input-field {
+    font-size: 14px;
+  }
+
+  .button {
+    font-size: 12px;
+    padding: 6px 10px;
+  }
+  }
+
+  
+  /* Media queries for small phone screens */
+  @media screen and (max-width: 480px) {
+    ul {
+      width: 100%;
+      margin: 10px;
+      padding: 20px;
+    }
+    .title {
+        font-size: 18px;
+      }
+    
+      .input-field {
+        font-size: 12px;
+      }
+    
+      .button {
+        font-size: 10px;
+        padding: 4px 8px;
+      }
+}
