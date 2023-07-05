@@ -137,9 +137,9 @@ function myFunction() {
   var newImageSrc = '';
 
   if (element.classList.contains('dark-mode')) {
-    newImageSrc = 'images/sun_icon.png'; 
+    newImageSrc = "images/icon-sun.svg"; 
   } else {
-    newImageSrc = 'images/moon_icon.png'; 
+    newImageSrc = "images/icon-moon.svg"; 
   }
 
   currentImage.src = newImageSrc;
@@ -243,3 +243,4 @@ listItems.forEach(function(item) {
   item.addEventListener('drop', handleDrop, false);
   item.addEventListener('dragend', handleDragEnd, false);
 });
+
