@@ -14,10 +14,9 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 35%; /* Updated to 35% */
+    width: 35%; 
     max-width: 500px; /* Added maximum width for responsiveness */
     margin: 0 auto; /* Center the container horizontally */
-    overflow: auto;
     color: black;
 }
 #todo-list {
@@ -139,43 +138,49 @@ ul li.checked::before {
     color: white;
     text-align: left;
     font-family: "Josefin Sans", sans-serif;
+    font-weight: bold;
     height:40%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;   
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 0px;
+    margin-bottom: 10px;
 }
 .header-top {
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 70%;
+    max-width: 68%;
+    padding-left: 10px; /* Adjust the padding-left to maintain center alignment */
 }
   
 .header-bottom {
     margin-top: 40px; 
     display: flex;
-   
+    padding-left: 31%;
     justify-content: center;
     align-items: center;
     width: 100%;
-    max-width: 650px;
+    max-width: 500px;
     text-align: center;
 }
 
 .header h1 {
     padding-left: 400px;
+    margin: 0;
     font-family: "Josefin Sans", sans-serif;
 }
-
 #newInput {
     display: block;
     text-align: left;
     outline: none;
-    width: 100%; /* Updated to 100% */
-    max-width: 500px; /* Added maximum width for responsiveness */
+    width: 100%; /* Adjust the width calculation to accommodate left and right elements */
+    max-width: 500px;
     padding: 10px;
-    margin-left: 10px;
     font-size: 18px;
     font-family: "Josefin Sans", sans-serif;
 }
@@ -201,19 +206,20 @@ input {
 }
   
 /*Add button */
-.addBtn {
+#add-button {
     padding: 10px;
     width: 10%;
-    background: #242bff;
-    color: #ffffff;
+    background: 2px solid ;
+    color: #000000;
     float: left;
     text-align: center;
-    font-size: 16px;
+    font-size: 18px;
+    font-family: inherit;
     cursor: pointer;
-    transition: 0.3s;
-    border-radius: 0;
+    outline:none;
+    border: none;
 }
-.addBtn:hover {
+#add-button:hover {
     background-color: #4f71da;
 }
 #clear-completed-button {
@@ -330,22 +336,20 @@ input {
 /************************************************************************************************/
   
 /*Styling toggle-button*/
-.toggle-button
-{
+.toggle-button {
     border: none;
-    background-color:none;
+    background-color: none;
     background: none;
     src: url(/images/icon-moon.svg);
     cursor: pointer;
-    margin-left: 3px;
+    margin-left: auto; /* Move the toggle-button to the right edge */
 }
 
+
 .toggle-button-container {
-    flex-grow: 1;
     display: flex;
-    justify-content: flex-end;
+    align-items: center;
 }
-  
 .toggle-button img
 {
     width: 25px;
@@ -410,6 +414,9 @@ input {
 
     .header {
         padding: 10px;
+        font-size: 12px;
+        margin-top: 0px;
+        margin-bottom: 5px;
     }
 
     .header h1 {
