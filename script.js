@@ -1,68 +1,69 @@
-// Retrieve elements with the close class
-var closebtns = document.getElementsByClassName("close");
-var i;
-updateTaskCount();
+  var closebtns = document.getElementsByClassName("close");
+  var i;
+  updateTaskCount();
 
-// Loop through the elements, and hide the parent when clicked on
-for (i = 0; i < closebtns.length; i++) {
-  closebtns[i].addEventListener("click", function() {
-    this.parentElement.style.display = 'none';
-    updateTaskCount();
-  });
-}
-
-// Checked symbol when clicking on a list item
-var list = document.querySelector('ul');
-list.addEventListener('click', function(ev) {
-  if (ev.target.tagName === 'LI') {
-    ev.target.classList.toggle('checked');
-    updateTaskCount();
+  // Loop through the elements, and hide the parent when clicked on
+  for (i = 0; i < closebtns.length; i++) {
+    closebtns[i].addEventListener("click", function() {
+      this.parentElement.style.display = 'none';
+      updateTaskCount();
+    });
   }
-}, false);
 
-//Using enter to accept input
-var input = document.getElementById('newInput');
-input.addEventListener('keydown', function(event) {
-  if (event.key === 'Enter') {
-    event.preventDefault(); // Prevent form submission
+  // Checked symbol when clicking on a list item
+  var list = document.querySelector('ul');
+  list.addEventListener('click', function(ev) {
+    if (ev.target.tagName === 'LI') {
+      ev.target.classList.toggle('checked');
+      updateTaskCount();
+    }
+  }, false);
+
+  // Using enter to accept input
+  var input = document.getElementById('newInput');
+  input.addEventListener('keydown', function(event) {
+    if (event.key === 'Enter') {
+      event.preventDefault(); // Prevent form submission
+      var inputValue = input.value.trim();
+      if (inputValue !== '') {
+        newElement(inputValue);
+        input.value = ''; // Clear the input field
+      }
+    }
+  });
+
+  // Add a new item to the list when "Add" is clicked
+  var addButton = document.getElementById('add-button');
+  addButton.addEventListener('click', function() {
     var inputValue = input.value.trim();
-    if (inputValue !== '') {
+    if (inputValue === '') {
+      alert("Enter a task!");
+    } else {
       newElement(inputValue);
       input.value = ''; // Clear the input field
     }
-  }
-});
+  });
 
-// Add a new item to the list when "Add" is clicked
-function newElement() {
-  var li = document.createElement("li");
-  var inputValue = document.getElementById("newInput").value;
-  var t = document.createTextNode(inputValue);
-  li.appendChild(t);
-  if (inputValue === '') {
-    alert("This field cannot be empty!");
-  } else {
+  // Add a new element to the list
+  function newElement(inputValue) {
+    var li = document.createElement("li");
+    var t = document.createTextNode(inputValue);
+    li.appendChild(t);
     document.getElementById("todo-list").appendChild(li);
     updateTaskCount(); // Update task count
-  }
 
-  document.getElementById("newInput").value = "";
+    var span = document.createElement("SPAN");
+    var txt = document.createTextNode("\u00D7");
+    span.className = "close";
+    span.appendChild(txt);
+    li.appendChild(span);
 
-  var span = document.createElement("SPAN");
-  var txt = document.createTextNode("\u00D7");
-  span.className = "close";
-  span.appendChild(txt);
-  li.appendChild(span);
-
-  for (i = 0; i < closebtns.length; i++) {
-    closebtns[i].onclick = function() {
+    span.onclick = function() {
       var div = this.parentElement;
       div.style.display = "none";
       updateTaskCount(); // Update task count
     };
   }
-}
-
 
 // Clear completed items from the list
 function clearCompletedItems() {
