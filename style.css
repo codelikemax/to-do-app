@@ -6,7 +6,8 @@ body {
     font-size: 14px;
     text-align: center;
 }
-
+.attribution { font-size: 11px; text-align: center; }
+.attribution a { color: hsl(228, 45%, 44%); }
   
 
 #todo-list-container {
@@ -15,9 +16,10 @@ body {
     align-items: center;
     justify-content: center;
     width: 35%; 
-    max-width: 500px; /* Added maximum width for responsiveness */
-    margin: 0 auto; /* Center the container horizontally */
+    max-width: 500px; 
+    margin: 0 auto; 
     color: black;
+    font-family: "Josefin Sans", sans-serif;
 }
 #todo-list {
     margin:20px;
@@ -27,7 +29,7 @@ body {
     list-style: none;
     text-align: center;
     font-family: "Josefin Sans", sans-serif;
-    max-height: 260px; 
+    max-height: 250px; 
     height: fixed;
     overflow-y: scroll; 
     scroll-behavior: smooth; 
@@ -134,12 +136,12 @@ ul li.checked::before {
 /* header style*/
 .header {
     background-image: url(images/bg-desktop-light.jpg);
+    background-size: cover;
     padding: 60px;
     color: white;
     text-align: left;
     font-family: "Josefin Sans", sans-serif;
     font-weight: bold;
-    height:40%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -153,9 +155,9 @@ ul li.checked::before {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 70%;
+    width: 62%;
     max-width: 68%;
-    padding-left: 10px; /* Adjust the padding-left to maintain center alignment */
+    padding-left: 50px; /* Adjust the padding-left to maintain center alignment */
 }
   
 .header-bottom {
@@ -164,9 +166,8 @@ ul li.checked::before {
     padding-left: 31%;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    width: 80%;
     max-width: 500px;
-    text-align: center;
 }
 
 .header h1 {
@@ -178,9 +179,11 @@ ul li.checked::before {
     display: block;
     text-align: left;
     outline: none;
-    width: 100%; /* Adjust the width calculation to accommodate left and right elements */
+    width: 100%; 
     max-width: 500px;
     padding: 10px;
+    margin-left: 20px;
+    border: none;
     font-size: 18px;
     font-family: "Josefin Sans", sans-serif;
 }
@@ -284,8 +287,11 @@ input {
 /*Button container styles*/
 #button-container {
     display: flex;
-    position: relative;
-    gap: 10px;
+    flex-direction: row;
+    justify-content: center;
+    gap: 15px;
+    font-family: "Josefin Sans", sans-serif;
+    font-size: 12px;
 }
 
   
@@ -422,7 +428,11 @@ input {
     .header h1 {
         padding-left: 0;
     }
-
+    .header-bottom{
+            width: 100%;
+            margin: 5px;
+            padding: 10px;    
+    }
     input {
         width: 90%;
     }
@@ -432,5 +442,10 @@ input {
     }
     #todo-list-container{
         width:90%
+    }
+    #newInput{
+        width:70%;
+        padding: 8px;
+        font-size: 14px;
     }
 }
