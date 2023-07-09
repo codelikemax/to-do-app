@@ -162,7 +162,7 @@ function myFunction() {
 
 // Set initial background image size
 var header = document.getElementById('header');
-header.style.backgroundSize = 'auto';
+header.style.backgroundSize = 'cover';
 
 }
 
