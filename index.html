@@ -1,18 +1,20 @@
 <!DOCTYPE html>
-<html>
-<div class = "container">
-  <head>
-    <meta charset = "UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Todo-App | Max Ryan</title>
-    <link rel = stylesheet type ="text/css" href="style.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Josefin+Sans">
-    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-  </head>
- 
-<body>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
 
-  <div id="header" class="header">
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  
+  <title>Todo App | Max Ryan</title>
+  <link rel = stylesheet type ="text/css" href="style.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Josefin+Sans">
+  <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+
+    
+</head>
+<body>
+ <div id="header" class="header">
     <div class="header-top">
       <h1>T O D O</h1>
       <button class="toggle-button" onclick="myFunction()">
@@ -25,8 +27,6 @@
     </div>
   </div>
   
-  
-
   <div id = "todo-list-container">
     <ul id = "todo-list">
       <li class = "checked"><span class = "close">×</span>Complete online JavaScript course</li>
@@ -36,26 +36,23 @@
       <li draggable="true"><span class = "close">×</span>Pick up groceries</li>
       <li draggable="true"><span class = "close">×</span>Complete Todo App on Frontend Mentor</li>
     </ul>
-
-   
-    
-    <div id="button-container">
-      <div id="task-count"></div>
-      <button id="all-button">All</button>
-      <button id="active-button">Active</button>
-      <button id="completed-button">Completed</button>
-      <button id="clear-completed-button">Clear Completed</button>
-    </div>
   </div>
-<br><br>
-<p>Drag and drop to reorder the list</p>
 
+  <div id="button-container">
+    <div id="task-count"></div>
+    <button id="all-button">All</button>
+    <button id="active-button">Active</button>
+    <button id="completed-button">Completed</button>
+    <button id="clear-completed-button">Clear Completed</button>
+  </div>
+
+  <br><br>
+  <p>Drag and drop to reorder the list</p>
+
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="#">Max Ryan Asiedu-Gyekyi</a>.
+  </div>
   <script type ="text/javascript" src="script.js"></script>
-
 </body>
-</div>
-
 </html>
-
-
-
