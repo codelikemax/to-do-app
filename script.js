@@ -67,7 +67,7 @@ addButton.addEventListener('click', function() {
 // Add a new element to the list
 function newElement(inputValue) {
   var todoList = document.getElementById('todo-list');
-  
+
   // Remove x's from all items
   var items = todoList.getElementsByTagName('li');
   for (var i = 0; i < items.length; ++i) {
@@ -79,15 +79,15 @@ function newElement(inputValue) {
 
   // Add new item
   var li = document.createElement("li");
-  li.setAttribute('draggable', true); 
+  li.setAttribute('draggable', true);
   var t = document.createTextNode(inputValue);
   li.appendChild(t);
-  
+
   // Add close button
   var span = document.createElement("span");
   span.className = "close";
   span.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"><path fill="#494C6B" fill-rule="evenodd" d="M16.97 0l.708.707L9.546 8.84l8.132 8.132-.707.707-8.132-8.132-8.132 8.132L0 16.97l8.132-8.132L0 .707.707 0 8.84 8.132 16.971 0z"/></svg>`;
-  
+
   // Add click event listener to close button
   span.addEventListener('click', function(event) {
     event.stopPropagation();
@@ -96,22 +96,34 @@ function newElement(inputValue) {
     updateTaskCount();
     updateLocalStorage();
   });
-  
+
   // Add mouseover event listener to add close button
   li.addEventListener('mouseover', function() {
     li.appendChild(span);
   });
-  
+
   // Add mouseout event listener to remove close button
   li.addEventListener('mouseout', function() {
     span.remove();
   });
-  
+
   todoList.appendChild(li);
-  
+
   updateTaskCount(); // Update task count
 }
 
+// Add double-click event listener to delete item
+var listItems = document.querySelectorAll('#todo-list li');
+listItems.forEach(function(item) {
+  item.addEventListener("dblclick", function() {
+    this.remove();
+    updateTaskCount();
+
+    // Remove item from localStorage
+    var itemText = this.textContent;
+    removeFromLocalStorage(itemText);
+  });
+});
 
 
 
