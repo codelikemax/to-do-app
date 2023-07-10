@@ -1,3 +1,28 @@
+// Function to set the header image based on the current mode
+function setHeaderImage() {
+  var element = document.body;
+  var header = document.getElementById('header');
+  var toggleButton = document.querySelector('.toggle-button');
+  var currentImage = toggleButton.querySelector('img');
+  var newImageSrc = '';
+
+  if (element.classList.contains('dark-mode')) {
+    newImageSrc = "images/bg-desktop-dark.jpg";
+    currentImage.src = "images/icon-sun.svg";
+  } else {
+    newImageSrc = "images/bg-desktop-light.jpg";
+    currentImage.src = "images/icon-moon.svg";
+  }
+
+  header.style.backgroundImage = 'url(' + newImageSrc + ')';
+}
+
+// Event listener for DOMContentLoaded
+document.addEventListener('DOMContentLoaded', function() {
+  setHeaderImage();
+});
+
+
 // Retrieve elements with the close class
 var closeBtns = document.getElementsByClassName("close");
 
