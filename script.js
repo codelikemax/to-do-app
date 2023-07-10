@@ -14,7 +14,7 @@ for (i = 0; i < closebtns.length; i++) {
     var itemText = div.firstChild.textContent;
     removeFromLocalStorage(itemText);
   });
-
+  
   // Add double-click event listener to delete item
   closebtns[i].parentElement.addEventListener("dblclick", function() {
     var div = this;
@@ -22,7 +22,7 @@ for (i = 0; i < closebtns.length; i++) {
     updateTaskCount();
     
     // Remove item from localStorage
-    var itemText = div.firstChild.textContent;
+    var itemText = div.textContent;
     removeFromLocalStorage(itemText);
   });
 }
