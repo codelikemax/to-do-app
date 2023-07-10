@@ -16,7 +16,7 @@ body {
     align-items: center;
     justify-content: space-between;
     padding: 30px;
-    background: url(/to-do-app-main/images/bg-desktop-light.jpg);
+    background: url(images/bg-desktop-light.jpg);
     background-size: cover;
   }
   
