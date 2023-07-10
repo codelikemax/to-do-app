@@ -1,30 +1,43 @@
 // Retrieve elements with the close class
-var closebtns = document.getElementsByClassName("close");
-var i;
-updateTaskCount();
+var closeBtns = document.getElementsByClassName("close");
 
-// Loop through the elements, and hide the parent when clicked on
-for (i = 0; i < closebtns.length; i++) {
-  closebtns[i].addEventListener("click", function() {
-    var div = this.parentElement;
-    div.style.display = 'none';
+// Loop through the elements and attach click event listeners
+Array.from(closeBtns).forEach(function(closeBtn) {
+  closeBtn.addEventListener("click", function() {
+    var listItem = this.parentElement;
+    listItem.remove();
     updateTaskCount();
-    
+
     // Remove item from localStorage
-    var itemText = div.firstChild.textContent;
+    var itemText = listItem.firstChild.textContent;
     removeFromLocalStorage(itemText);
   });
-  
-  // Add double-click event listener to delete item
-  closebtns[i].parentElement.addEventListener("dblclick", function() {
-    var div = this;
-    div.style.display = 'none';
+});
+
+// Add double-click event listener to delete item
+var listItems = document.querySelectorAll('#todo-list li');
+listItems.forEach(function(item) {
+  item.addEventListener("dblclick", function() {
+    this.remove();
     updateTaskCount();
-    
+
     // Remove item from localStorage
-    var itemText = div.textContent;
+    var itemText = this.textContent;
     removeFromLocalStorage(itemText);
   });
+});
+
+
+// Function to handle the double-click event on the parent element
+function createParentDoubleClickHandler(parentElement) {
+  return function() {
+    parentElement.remove();
+    updateTaskCount();
+
+    // Remove item from localStorage
+    var itemText = parentElement.textContent;
+    removeFromLocalStorage(itemText);
+  };
 }
 
 // Checked symbol when clicking on a list item
@@ -113,17 +126,19 @@ function newElement(inputValue) {
 }
 
 // Add double-click event listener to delete item
-var listItems = document.querySelectorAll('#todo-list li');
-listItems.forEach(function(item) {
-  item.addEventListener("dblclick", function() {
-    this.remove();
+var listContainer = document.getElementById('todo-list');
+listContainer.addEventListener('dblclick', function(event) {
+  if (event.target.tagName === 'LI') {
+    var listItem = event.target;
+    listItem.remove();
     updateTaskCount();
 
     // Remove item from localStorage
-    var itemText = this.textContent;
+    var itemText = listItem.textContent;
     removeFromLocalStorage(itemText);
-  });
+  }
 });
+
 
 
 
