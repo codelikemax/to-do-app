@@ -16,10 +16,8 @@ body {
     align-items: center;
     justify-content: space-between;
     padding: 30px;
-    background: url(/images/bg-desktop-light.jpg);
+    background: url(/to-do-app-main/images/bg-desktop-light.jpg);
     background-size: cover;
-    font-family: "Josefin Sans", sans-serif;
-    position: relative;
   }
   
   .header h1 {
