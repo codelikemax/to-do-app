@@ -237,7 +237,7 @@ input {
     margin-top: 10px; 
 }
 #clear-completed-button:active {
-    color: blue; /* Set color to blue when button is clicked */
+    color: blue; 
 }
 #completed-button {
     background: none;
