@@ -145,9 +145,14 @@ function newElement(inputValue) {
     span.remove();
   });
 
+  
+
   todoList.appendChild(li);
 
   updateTaskCount(); // Update task count
+
+  handleNewListItem(li);
+  return li;
 }
 
 // Add double-click event listener to delete item
@@ -359,3 +364,63 @@ function showAllItems() {
 // Get the reference to the "All" button
 var allButton = document.getElementById('all-button');
 allButton.addEventListener('click', showAllItems);
+
+// Drag and drop functionality
+
+var draggedItem = null;
+
+function dragStart(event) {
+  draggedItem = this;
+  event.dataTransfer.effectAllowed = 'move';
+  event.dataTransfer.setData('text/html', this.innerHTML);
+  this.classList.add('dragging');
+}
+
+function dragEnter(event) {
+  event.preventDefault();
+  this.classList.add('dragover');
+}
+
+function dragOver(event) {
+  event.preventDefault();
+  this.classList.add('dragover');
+}
+
+function dragLeave(event) {
+  this.classList.remove('dragover');
+}
+
+function drop(event) {
+  event.preventDefault();
+  if (this !== draggedItem) {
+    var temp = this.innerHTML;
+    this.innerHTML = draggedItem.innerHTML;
+    draggedItem.innerHTML = temp;
+  }
+  this.classList.remove('dragover');
+}
+
+function dragEnd(event) {
+  this.classList.remove('dragging');
+  updateTaskCount();
+  updateLocalStorage();
+}
+
+function addDragListeners(item) {
+  item.addEventListener('dragstart', dragStart);
+  item.addEventListener('dragenter', dragEnter);
+  item.addEventListener('dragover', dragOver);
+  item.addEventListener('dragleave', dragLeave);
+  item.addEventListener('drop', drop);
+  item.addEventListener('dragend', dragEnd);
+}
+
+// Add drag and drop listeners to existing list items
+listItems.forEach(function(item) {
+  addDragListeners(item);
+});
+
+// Function to handle adding drag and drop listeners to new list items
+function handleNewListItem(listItem) {
+  addDragListeners(listItem);
+}
