@@ -203,10 +203,7 @@ ul li.checked::before {
     top: 0;
     padding: 12px 16px 12px 16px;
 } 
-.close:hover {
-    background-color:hsl(236, 9%, 61%);
-    color: black;
-}
+
 /***************************************************************************************************/
 
   
