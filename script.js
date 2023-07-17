@@ -396,8 +396,16 @@ function drop(event) {
     var temp = this.innerHTML;
     this.innerHTML = draggedItem.innerHTML;
     draggedItem.innerHTML = temp;
+
+    // Handle the checked state of the dragged and dropped items
+    var draggedItemChecked = draggedItem.classList.contains('checked');
+    var droppedItemChecked = this.classList.contains('checked');
+    draggedItem.classList.toggle('checked', droppedItemChecked);
+    this.classList.toggle('checked', draggedItemChecked);
   }
   this.classList.remove('dragover');
+  updateTaskCount();
+  updateLocalStorage();
 }
 
 function dragEnd(event) {
