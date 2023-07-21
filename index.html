@@ -14,38 +14,42 @@
     
 </head>
 <body>
- <div id="header" class="header">
+  <div id="header" class="header">
     <div class="header-top">
       <h1>T O D O</h1>
       <button class="toggle-button" onclick="myFunction()">
         <img src="images/icon-moon.svg">
       </button>
     </div>
+
     <div class="header-bottom">
-      <input type="text" id="newInput" placeholder="Add a new task...">
-      <button id ="add-button">+</button>
+      <input type="text" id="newInput" placeholder="     Create a new todo...">
+      <button id="add-button" onclick="addTask()"></button>
     </div>
   </div>
   
   <div id = "todo-list-container">
     <ul id="todo-list"></ul>
+    <div id="button-container">
+      <div id="task-count"></div>
+      <button id="all-button">All</button>
+      <button id="active-button">Active</button>
+      <button id="completed-button">Completed</button>
+      <button id="clear-completed-button">Clear Completed</button>
+    </div>
   </div>
 
-  <div id="button-container">
-    <div id="task-count"></div>
-    <button id="all-button">All</button>
-    <button id="active-button">Active</button>
-    <button id="completed-button">Completed</button>
-    <button id="clear-completed-button">Clear Completed</button>
-  </div>
+  
 
-  <br><br>
-  <p>Drag and drop to reorder the list</p>
 
-  <div class="attribution">
+
+<footer class="attribution">
+    <p>Drag and drop to reorder the list</p>
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
     Coded by <a href="https://github.com/codelikemax/to-do-app.git">Max Ryan Asiedu-Gyekyi</a>.
-  </div>
+</footer>
+
+
   <script type ="text/javascript" src="script.js"></script>
 </body>
 </html>
