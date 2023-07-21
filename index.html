@@ -23,22 +23,30 @@
     </div>
 
     <div class="header-bottom">
-      <input type="text" id="newInput" placeholder="     Create a new todo...">
-      <button id="add-button" onclick="addTask()"></button>
+      <div class="input-container">
+        <input type="text" id="newInput" placeholder="">
+        
+      </div>
+      <input type="text" id="newInputPlaceholder" placeholder="  Create a new todo...">
+      <div class="add-button-container">
+        <button id="add-button" onclick="addTask"></button>
+      </div>
     </div>
+    
+    
   </div>
   
   <div id = "todo-list-container">
     <ul id="todo-list"></ul>
-    <div id="button-container">
-      <div id="task-count"></div>
-      <button id="all-button">All</button>
-      <button id="active-button">Active</button>
-      <button id="completed-button">Completed</button>
-      <button id="clear-completed-button">Clear Completed</button>
-    </div>
+   
   </div>
-
+  <div id="button-container">
+    <div id="task-count"></div>
+    <button id="all-button">All</button>
+    <button id="active-button">Active</button>
+    <button id="completed-button">Completed</button>
+    <button id="clear-completed-button">Clear Completed</button>
+  </div>
   
 
 
