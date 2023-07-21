@@ -1,63 +1,549 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-
-  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+body {
+    margin: 0;
+    min-width: 250px;
+    font-family: "Josefin Sans", sans-serif;
+    background-color: hsl(236, 33%, 92%);
+    color: hsl(233, 14%, 35%);
+    font-size: 14px;
+    text-align: center;
+}
+.attribution { font-size: 11px; text-align: center; }
+.attribution a { color: hsl(228, 45%, 44%); }
+ /***********************************************************************/
+ /* header style*/
+ .header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px;
+    background: url(images/bg-desktop-light.jpg);
+    background-size: cover;
+    min-height: 20vh;
+  }
   
-  <title>Todo App | Max Ryan</title>
-  <link rel = stylesheet type ="text/css" href="style.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Josefin+Sans">
-  <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+  .header h1 {
+    margin: 0;
+    color: white;
+    font-size: 32px;
+    margin-bottom: 5px;
+  }
 
-    
-</head>
-<body>
-  <div id="header" class="header">
-    <div class="header-top">
-      <h1>T O D O</h1>
-      <button class="toggle-button" onclick="myFunction()">
-        <img src="images/icon-moon.svg">
-      </button>
-    </div>
+  #newInput {
+    display: flex;
+    outline: none;
+    width: 100%;
+    max-width: 500px;
+    padding-left: 40px;
+    position: inherit;
+    font-size: 14px;
+    font-family: "Josefin Sans", sans-serif;
+    caret-color: #ccc;
+    margin: 0;
+    border: none;
+    outline: none;
+    border-radius: 5px; /* Rounded border only on the right side */
+    padding: 15px 10px 10px ; /* Adjusted padding */
+  }
 
-    <div class="header-bottom">
-      <div class="input-container">
-        <input type="text" id="newInput" placeholder="">
-        
-      </div>
-      <input type="text" id="newInputPlaceholder" placeholder="  Create a new todo...">
-      <div class="add-button-container">
-        <button id="add-button" onclick="addTask"></button>
-      </div>
-    </div>
-    
-    
-  </div>
+  #newInputPlaceholder {
+    margin: 0;
+    border: none;
+    outline: none;
+    border-radius: 5px; /* Rounded border only on the left side */
+    width: 100%;
+    padding: 10px 40px 10px 10px; /* Adjusted padding */
+    font-size: 18px;
+    font-family: "Josefin Sans", sans-serif;
+    z-index: 1; /* Ensure it's above the second input */
+    position: relative; /* Make sure it respects its z-index */
+  }
+  #newInputPlaceholder::placeholder {
+    color: #acaaaa;
+  }
   
-  <div id = "todo-list-container">
-    <ul id="todo-list"></ul>
+  input:focus::placeholder {
+    opacity: 0.2;
+  }
+  
+.header-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width:500px;
    
-  </div>
-  <div id="button-container">
-    <div id="task-count"></div>
-    <button id="all-button">All</button>
-    <button id="active-button">Active</button>
-    <button id="completed-button">Completed</button>
-    <button id="clear-completed-button">Clear Completed</button>
-  </div>
+}
+
+
+.header-bottom {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 500px;
+    position: relative;
+    border-radius: 5px;
+    margin-bottom: 0.1rem;
+  
+}
+  
+/* Clear floats after the header */
+.header:after {
+    content: "";
+    display: table;
+    clear: both;
+} 
+
+.input-container {
+    position: relative;
+    flex: 1;
+  }
+
+ 
+/************************************************LIST STYLE*******************************************/
+
+#todo-list-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 500px;
+    margin: auto;
+    margin-top: -30px;
+    border-radius: 5px;
+    font-family: "Josefin Sans, sans-serif";
+    
+}
+#todo-list-container {
+    overflow-x: hidden;
+}
+
+#todo-list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow-y: auto;
+    max-height: 400px;
+  }
   
 
+#todo-list::-webkit-scrollbar {
+    width: 0.5em;
+}
 
 
-<footer class="attribution">
-    <p>Drag and drop to reorder the list</p>
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="https://github.com/codelikemax/to-do-app.git">Max Ryan Asiedu-Gyekyi</a>.
-</footer>
+#todo-list::-webkit-scrollbar-thumb {
+    background-color: hsl(236, 9%, 61%);
+}
+
+  
+/*Styling toggle-button*/
+.toggle-button {
+    border: none;
+    background-color: transparent;
+    background: none;
+    src: url(/images/icon-moon.svg);
+    cursor: pointer;
+    position: right;
+    margin-left: 20px;
+    margin-right: calc(100% - 500px);
+}
+
+.toggle-button-container {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: -35px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+.toggle-button img
+{
+    width: 20px;
+    
+}
+
+/*******************************************************************************/
+/* Margins and padding for the list */
+ul {
+    margin: 20px;
+    padding: 50px;
+    width: 500px;
+    position: relative;
+    border-radius: 5px;
+}
+  
+/* Style the list items */
+ul li {
+    cursor: pointer;
+    position: relative;
+    padding: 12px 8px 12px 40px;
+    border-bottom: 1px solid #ccc;
+    list-style-type: none;
+    background-color: #fff;
+    font-size: 18px;
+    transition: 0.2s;
+    font-family: "Josefin Sans", sans-serif;
+    
+}
+li {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    border-bottom: 1px solid #ccc;
+  }
+
+/* Adding circles for checks */
+ul li::before {
+    content: "";
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    border: 1px solid #9e9e9e;
+    border-radius: 50%;
+    transition: background-color 0.3s ease-in-out;
+}
+  
+/* Change border color on hover */
+ul li:hover::before {
+    border-color: linear-gradient(to bottom, hsl(192, 100%, 67%), hsl(280, 87%, 65%)) ;
+    border: 1px solid thistle;    
+}
+  
+/* When clicked on, add a background color and strike out text */
+ul li.checked {
+    color: hsl(236, 9%, 61%);
+    text-decoration: line-through;
+}
+  
+/* "checked" mark when clicked */
+ul li.checked::before {
+    content: url("./images/icon-check.svg");
+    background-image: linear-gradient(to bottom, hsl(192, 100%, 67%), hsl(280, 87%, 65%));
+    background-size:contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 0px solid transparent;
+    border-radius: 50%;
+    width: 20px; 
+    height: 20px; 
+}
+  
+  
+/* Show the checked circle by default */
+ul li.checked::before {
+    opacity: 1;
+    border-radius: 50%;
+    top: 50%;
+    width: 20px;
+    height: 20px;
+
+}
+  
+/* Style the close button */
+.close {
+  position: absolute;
+  visibility: hidden;
+  margin-left: auto; 
+  right: 0;
+  top: 0;
+  padding: 12px 16px 12px 16px;
+}
+.close:hover {
+    background-color:hsl(236, 9%, 61%);
+    color: black;
+}
+li:hover .close {
+    visibility: visible;
+    background: none;
+  }
+**********************************************************************************************/
+
+  
+/* Style the input */
+input {
+    margin: 0;
+    border: none;
+    border-radius: 0;
+    width: 100%; /* Adjusted width to take up the entire width */
+    padding: 10px 40px 10px 30px; /* Adjusted the right padding to create spacing */
+    font-size: 18px;
+    font-family: "Josefin Sans", sans-serif;
+}
+/*Add button */
+.add-button-container {
+    position: absolute;
+    left: 0;
+    margin-left: 5px;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px; /* Adjust the width for the Add button */
+    z-index: 2; /* Make sure it's above the input with placeholder */
+}
+  
+  #add-button {
+    /* New styles for the Add button */
+    background-color: transparent;
+    border: 1px solid #9e9e9e;
+    border-radius: 50%;
+    padding: 0.5rem;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+    z-index: 2; /* Ensure the button is above the input with placeholder */
+  }
+  
+  
+  
+  #add-button:before {
+    content: ""; /* Add this line to display the plus sign in the button */
+    font-size: 16px; /* Adjust the font size as needed */
+  }
+  
+  #add-button:hover {
+    border: 1px solid thistle;
+  }
+
+#clear-completed-button {
+    background: none;
+    border: none;
+    padding: 0;
+    font-family: inherit;
+    font-size: inherit;
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+    margin-top: 10px; 
+}
+#clear-completed-button:active {
+    color: blue; 
+}
+#completed-button {
+    background: none;
+    border: none;
+    padding: 0;
+    font-family: inherit;
+    font-size: inherit;
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+#completed-button:active {
+    color: blue; 
+}
+
+#active-button {
+    background: none;
+    border: none;
+    padding: 0;
+    font-family: inherit;
+    font-size: inherit;
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+#active-button:active {
+    color: blue; 
+}
+
+#all-button {
+    background: none;
+    border: none;
+    padding: 0;
+    font-family: inherit;
+    font-size: inherit;
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+#all-button:active {
+    color: blue; 
+}
+
+/*Button container styles*/
+/*Button container styles*/
+#button-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 14px;
+  color: hsl(233, 14%, 35%);
+  padding: 5px;
+  min-height: fit-content;
+  width: fit-content; /* Set the width to fit its content */
+  border-radius: 5px;
+  box-shadow: 1px 3px 3px 1px rgba(133, 125, 125, 0.2);
+  margin: auto; /* Center the container horizontally */
+}
+
+#button-container button {
+  background: none;
+  border: none;
+  padding: 8px 12px;
+}
+
+#task-count {
+  margin-right: 40px; /* Add margin to separate from clear completed button */
+}
+
+#clear-completed-button {
+  margin-left: 40px; /* Add margin to separate from task count */
+}
+
+/***************************************************************************************************/
+/* Light theme styles */
+.light-mode {
+    background-color: hsl(0, 0%, 98%);
+    color: #000;
+}
+.container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+  
+/* Dark theme styles */
+
+.dark-mode {
+    background-color:hsl(235, 21%, 11%);
+    color: hsl(234, 39%, 85%);
+}
+
+.container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 20px;
+    color: hsl(235, 61%, 15%);
+}
+.dark-mode .todo-list-container {
+   
+    color: hsl(108, 39%, 85%);
+}
+.dark-mode #newInput{
+    background-color: hsl(235, 24%, 19%);
+}
 
 
-  <script type ="text/javascript" src="script.js"></script>
-</body>
-</html>
+/* Button container styles when toggle button is clicked */
+.dark-mode ul li {
+    color: hsl(234, 39%, 85%); 
+    background-color: hsl(235, 24%, 19%);
+    border-bottom:1px solid #333333;
+}
+.dark-mode #button-container button {
+    background-color: none;
+    color: hsl(234, 39%, 85%);
+}
+.dark-mode #task-count {
+    color: hsl(234, 39%, 85%);
+}
+
+  
+/************************************************************************************************/
+
+
+/*******************************************************************************************/
+/*Dragging styles*/
+.dragging {
+  opacity: 0.5;
+}
+
+.over {
+  background-color: lightgray;
+}
+
+
+/*************************************************************/
+/* Media queries */
+@media screen and (max-width: 576px) {
+    .header {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        font-size: 12px;
+        margin-top: 0px;
+        margin-bottom: 5px;
+        text-align:center;
+    }
+
+    .header h1 {
+        padding-left: 0;
+        font-size: 24px;
+    }
+
+    #newInput {
+        width: 90%;
+        padding: 8px;
+        font-size: 14px;
+        margin-right:auto;
+        margin-left:auto;
+        display:block;
+        margin-top :10px;
+        margin-bottom :10px;
+        text-align:center;
+        padding-left: 40px;
+    }
+
+    #add-button {
+        position: absolute;
+        display: flex;
+        left: 10px; 
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: transparent;
+        border: 1px solid #9e9e9e;
+        border-radius: 50%;
+        padding: 0.5rem;
+        padding-right : 0px; 
+        padding-left: 15px;
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+        background-color: none;
+        transition: background-color 0.3s ease-in-out;
+      }
+    
+      #todo-list-container{
+        width :100%;
+    }
+
+    #todo-list{
+        max-height :none;
+    }
+
+    ul li{
+        font-size :16px;
+        padding :10px;
+    }
+
+    #button-container{
+        flex-wrap :wrap;
+        margin-top :20px;
+        margin-bottom :20px;
+    }
+
+    button{
+        font-size :14px;
+        margin-bottom :10px;
+        height :40px;
+        padding-left:15px;
+        padding-right:15px;
+        border-radius:4px;
+        outline:none;
+        border:none;
+    }
+
+     
+}
