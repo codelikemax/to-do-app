@@ -20,7 +20,34 @@ function setHeaderImage() {
 // Event listener for DOMContentLoaded
 document.addEventListener('DOMContentLoaded', function() {
   setHeaderImage();
+  restoreToggleState(); // Restore toggle state when the page is loaded
 });
+
+// Function to save the dark mode toggle state
+function saveToggleState() {
+  var element = document.body;
+  var isDarkMode = element.classList.contains('dark-mode');
+  localStorage.setItem('darkMode', isDarkMode);
+}
+
+// Function to restore the dark mode toggle state
+function restoreToggleState() {
+  var isDarkMode = localStorage.getItem('darkMode');
+  var element = document.body;
+  
+  if (isDarkMode === 'true') {
+    element.classList.add('dark-mode');
+  } else {
+    element.classList.remove('dark-mode');
+  }
+
+  // Update the header image and toggle button based on the restored state
+  setHeaderImage();
+  var toggleButton = document.querySelector('.toggle-button');
+  var currentImage = toggleButton.querySelector('img');
+  var newImageSrc = isDarkMode === 'true' ? "images/icon-sun.svg" : "images/icon-moon.svg";
+  currentImage.src = newImageSrc;
+}
 
 
 // Retrieve elements with the close class
@@ -121,10 +148,56 @@ function newElement(inputValue) {
   var t = document.createTextNode(inputValue);
   li.appendChild(t);
 
-  // Add close button
-  var span = document.createElement("span");
-  span.className = "close";
-  span.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"><path fill="#494C6B" fill-rule="evenodd" d="M16.97 0l.708.707L9.546 8.84l8.132 8.132-.707.707-8.132-8.132-8.132 8.132L0 16.97l8.132-8.132L0 .707.707 0 8.84 8.132 16.971 0z"/></svg>`;
+   // Add close button
+   var span = document.createElement("span");
+   span.className = "close";
+   span.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18"><path fill="#494C6B" fill-rule="evenodd" d="M16.97 0l.708.707L9.546 8.84l8.132 8.132-.707.707-8.132-8.132-8.132 8.132L0 16.97l8.132-8.132L0 .707.707 0 8.84 8.132 16.971 0z"/></svg>`;
+   li.appendChild(span);
+ 
+   // Add click event listener to close button
+   span.addEventListener('click', function(event) {
+     event.stopPropagation();
+     var li = this.parentElement;
+     li.remove();
+     updateTaskCount();
+     updateLocalStorage();
+     var itemText = li.firstChild.textContent;
+     removeFromLocalStorage(itemText);
+   });
+
+
+
+
+// Get the input element and button container
+const input = document.getElementById('newInput');
+const buttonContainer = document.getElementById('button-container');
+
+// Function to add a new item
+function addItem() {
+  const inputValue = input.value.trim();
+
+  if (inputValue !== '') {
+    // Create a new list item
+    const newItem = document.createElement('li');
+    newItem.textContent = inputValue;
+
+    // Insert the new item before the button container
+    const list = document.getElementById('todo-list');
+    list.insertBefore(newItem, buttonContainer);
+
+    // Clear the input value
+    input.value = '';
+  }
+}
+
+
+
+
+
+
+// Event listener for the add button
+const addButton = document.getElementById('add-button');
+addButton.addEventListener('click', addItem);
 
   // Add click event listener to close button
   span.addEventListener('click', function(event) {
@@ -135,17 +208,16 @@ function newElement(inputValue) {
     updateLocalStorage();
   });
 
-  // Add mouseover event listener to add close button
-  li.addEventListener('mouseover', function() {
-    li.appendChild(span);
+
+   // Add event listener to the list item to show the close button
+   li.addEventListener('mouseenter', function() {
+    span.style.visibility = 'visible';
   });
 
-  // Add mouseout event listener to remove close button
-  li.addEventListener('mouseout', function() {
-    span.remove();
+  // Add event listener to the list item to hide the close button
+  li.addEventListener('mouseleave', function() {
+    span.style.visibility = 'hidden';
   });
-
-  
 
   todoList.appendChild(li);
 
@@ -231,7 +303,8 @@ function updateLocalStorage() {
 function myFunction() {
   var element = document.body;
   element.classList.toggle("dark-mode");
-
+  saveToggleState();
+  
   // Changing image on click
   var toggleButton = document.querySelector('.toggle-button');
   var currentImage = toggleButton.querySelector('img');
