@@ -103,7 +103,7 @@ list.addEventListener('click', function(ev) {
 }, false);
 
 // Using enter to accept input
-var input = document.getElementById('newInput');
+var input = document.getElementById('newInputPlaceholder');
 input.addEventListener('keydown', function(event) {
   if (event.key === 'Enter') {
     event.preventDefault(); // Prevent form submission
@@ -161,12 +161,18 @@ function newElement(inputValue) {
      li.remove();
      updateTaskCount();
      updateLocalStorage();
-     var itemText = li.firstChild.textContent;
-     removeFromLocalStorage(itemText);
+     
    });
 
+   // Add mouseover event listener to add close button
+  li.addEventListener('mouseenter', function() {
+    li.appendChild(span);
+  });
 
-
+  // Add mouseout event listener to remove close button
+  li.addEventListener('mouseleave', function() {
+    span.remove();
+  });
 
 // Get the input element and button container
 const input = document.getElementById('newInput');
