@@ -372,7 +372,6 @@ input {
 }
 
 /*Button container styles*/
-/*Button container styles*/
 #button-container {
   display: flex;
   align-items: center;
@@ -470,81 +469,115 @@ input {
 
 
 /*************************************************************/
-  /* Styles for screen width up to 576px (e.g., mobile devices) */
-  @media screen and (max-width: 576px) {
-    .header {
-      padding-top: 10px;
-      padding-bottom: 10px;
-      font-size: 12px;
-      margin-top: 0px;
-      margin-bottom: 5px;
-      text-align: center;
-    }
-  
-    .header h1 {
-      padding-left: 0;
-      font-size: 24px;
-    }
-  
-    .header-bottom {
-      flex-direction: column; /* Stack elements vertically */
-    }
-  
-    .header-bottom .input-container {
-      margin-bottom: 10px; /* Add some spacing between the input container and Add button */
-    }
-  
-    #newInputPlaceholder,
-    #newInput {
-      width: 100%; /* Full width on smaller screens */
-    }
-  
-    #add-button {
-      margin-top: 10px; /* Add some spacing between the Add button and the input field */
-    }
-  
-    #todo-list-container {
-      margin-top: 0; /* Remove the margin-top for the todo-list container */
-    }
+ /* Styles for screen width up to 576px (e.g., mobile devices) */
+@media screen and (max-width: 576px) {
+  .header {
+    padding-top: 15px;
+    padding-bottom: 25px;
+    font-size: 10px;
+    margin-top: 0px;
+    margin-bottom: 15px;
+    text-align: center;
+    background-size: cover;
+    overflow-x: hidden;
+    justify-content: space-between;
   }
-  
-  /* Styles for screen width from 577px to 768px (e.g., tablets) */
-  @media screen and (min-width: 577px) and (max-width: 768px) {
-    .header h1 {
-      font-size: 28px; /* Slightly larger font size for tablets */
-    }
-  
-    #newInput,
-    #newInputPlaceholder {
-      width: 90%; /* Reduce width for larger screens */
-    }
-  
-    #add-button {
-      margin-top: 10px; /* Add some spacing between the Add button and the input field */
-    }
-  
-    #todo-list-container {
-      margin-top: -20px; /* Adjust the margin-top for the todo-list container */
-    }
+  .header h1 {
+    font-size: 25px; /* Restore original font size for mobile */
   }
-  
-  /* Styles for screen width above 768px (e.g., desktops) */
-  @media screen and (min-width: 769px) {
-    .header h1 {
-      font-size: 32px; /* Restore original font size for desktops */
-    }
-  
-    #newInput,
-    #newInputPlaceholder {
-      width: 100%; /* Adjust width for larger screens */
-    }
-  
-    #add-button {
-      margin-top: 0; /* Remove margin-top for the Add button */
-    }
-  
-    #todo-list-container {
-      margin-top: -30px; /* Adjust the margin-top for the todo-list container */
-    }
+ 
+  .header-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 100%;   
   }
-  
+
+  #newInput,
+  #newInputPlaceholder {
+    width: 80%; /* Adjust width for smaller screens */
+  }
+
+  #add-button {
+    margin-top: 0; /* Remove margin-top for the Add button */
+  }
+
+  #todo-list-container {
+    margin-top: -30px; /* Adjust the margin-top for the todo-list container */
+    
+  }
+
+  ul li {
+    font-size: 15px; /* Restore font size for mobile */
+    padding: 8px 8px 8px 35px; /* Restore padding for mobile */
+    
+  }
+
+  /* Adjust the padding for the buttons in the button container */
+  #button-container button {
+    padding: 8px 10px;
+    font-size: 15px;
+  }
+}
+
+/* Styles for screen width from 577px to 768px (e.g., tablets) */
+@media screen and (min-width: 577px) and (max-width: 768px) {
+  .header h1 {
+    font-size: 32px; /* Restore original font size for desktops */
+  }
+
+  #newInput,
+  #newInputPlaceholder {
+    width: 100%; /* Adjust width for larger screens */
+  }
+
+  #add-button {
+    margin-top: 0; /* Remove margin-top for the Add button */
+  }
+
+  #todo-list-container {
+    margin-top: -30px; /* Adjust the margin-top for the todo-list container */
+  }
+
+  ul li {
+    font-size: 18px; /* Restore font size for desktops */
+    padding: 12px 8px 12px 40px; /* Restore padding for desktops */
+  }
+
+  /* Adjust the padding for the buttons in the button container */
+  #button-container button {
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+}
+
+/* Styles for screen width above 768px (e.g., desktops) */
+@media screen and (min-width: 769px) {
+  .header h1 {
+    font-size: 32px; /* Restore original font size for desktops */
+  }
+
+  #newInput,
+  #newInputPlaceholder {
+    width: 100%; /* Adjust width for larger screens */
+  }
+
+  #add-button {
+    margin-top: 0; /* Remove margin-top for the Add button */
+  }
+
+  #todo-list-container {
+    margin-top: -30px; /* Adjust the margin-top for the todo-list container */
+  }
+
+  ul li {
+    font-size: 18px; /* Restore font size for desktops */
+    padding: 12px 8px 12px 40px; /* Restore padding for desktops */
+  }
+
+  /* Adjust the padding for the buttons in the button container */
+  #button-container button {
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+}
