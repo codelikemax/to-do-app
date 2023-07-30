@@ -470,7 +470,7 @@ input {
 
 /*************************************************************/
  /* Styles for screen width up to 576px (e.g., mobile devices) */
-@media screen and (max-width: 576px) {
+@media screen and (min-width: 150px) and (max-width: 576px) {
   .header {
     padding-top: 15px;
     padding-bottom: 25px;
@@ -491,6 +491,7 @@ input {
     align-items: center;
     justify-content: space-evenly;
     width: 100%;   
+    max-width: auto;
   }
 
   #newInput,
@@ -504,7 +505,7 @@ input {
 
   #todo-list-container {
     margin-top: -30px; /* Adjust the margin-top for the todo-list container */
-    
+    max-width: fit-content;
   }
 
   ul li {
